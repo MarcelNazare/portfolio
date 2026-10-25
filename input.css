@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #4e644d;
+  --color-on-primary: #e5ffe1;
+  --color-primary-container: #d0e9cd;
+  --color-on-primary-container: #425741;
+  --color-primary-dim: #425842;
+  --color-primary-fixed: #d0e9cd;
+  --color-primary-fixed-dim: #c2dbbf;
+  --color-on-primary-fixed: #304430;
+  --color-on-primary-fixed-variant: #4b614b;
+
+  --color-secondary: #4e6172;
+  --color-on-secondary: #f6f9ff;
+  --color-secondary-container: #d1e5f9;
+  --color-on-secondary-container: #415464;
+  --color-secondary-dim: #425565;
+  --color-secondary-fixed: #d1e5f9;
+  --color-secondary-fixed-dim: #c3d7ea;
+  --color-on-secondary-fixed: #2f4151;
+  --color-on-secondary-fixed-variant: #4b5e6e;
+
+  --color-tertiary: #725b3f;
+  --color-on-tertiary: #fff7f3;
+  --color-tertiary-container: #fdddb9;
+  --color-on-tertiary-container: #644e33;
+  --color-tertiary-dim: #654f34;
+  --color-tertiary-fixed: #fdddb9;
+  --color-tertiary-fixed-dim: #eecfac;
+  --color-on-tertiary-fixed: #503c22;
+  --color-on-tertiary-fixed-variant: #6e573b;
+
+  --color-error: #9e422c;
+  --color-on-error: #fff7f6;
+  --color-error-container: #fe8b70;
+  --color-on-error-container: #742410;
+  --color-error-dim: #5c1202;
+
+  --color-background: #faf9f5;
+  --color-on-background: #2f342e;
+  --color-outline: #787c75;
+  --color-outline-variant: #afb3ab;
+
+  --color-surface: #faf9f5;
+  --color-on-surface: #2f342e;
+  --color-surface-variant: #e0e4db;
+  --color-on-surface-variant: #5c605a;
+  --color-surface-dim: #d7dcd2;
+  --color-surface-bright: #faf9f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f4ef;
+  --color-surface-container: #edeee8;
+  --color-surface-container-high: #e7e9e2;
+  --color-surface-container-highest: #e0e4db;
+  --color-surface-tint: #4e644d;
+
+  --color-inverse-surface: #0d0f0d;
+  --color-inverse-on-surface: #9d9d9a;
+  --color-inverse-primary: #e1fbdd;
+
+  /* Typography */
+  --font-headline: "Newsreader", serif;
+  --font-body: "Manrope", sans-serif;
+  --font-label: "Manrope", sans-serif;
+
+  /* Border Radius */
+  --radius-default: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+h1,
+h2,
+h3,
+.serif-heading {
+  font-family: "Noto Serif", serif;
+}
+.card {
+  background-color: var(--color-surface-container);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-outline-variant);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}

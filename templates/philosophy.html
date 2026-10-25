@@ -1,0 +1,73 @@
+{{define "philosophy.html"}}{{template "base_head" .}}
+
+<main class="pt-32 pb-24">
+  <section class="max-w-6xl mx-auto px-8 mb-24">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-7">
+        <span class="inline-block px-4 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full text-xs font-bold tracking-widest uppercase mb-6">Our Mission</span>
+        <h1 class="text-6xl md:text-8xl leading-tight font-bold text-on-surface mb-8 tracking-tighter font-serif">
+          Code with<br><span class="italic text-primary font-normal text-5xl md:text-7xl">Conscience.</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed max-w-2xl">
+          Where technical precision meets human empathy. We build systems that don't just process data — they protect people.
+        </p>
+      </div>
+      <div class="md:col-span-5 relative">
+        <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl relative z-10">
+          <img class="w-full h-full object-cover" alt="A thoughtful individual looking at a large screen" src="/static/philosophy-hero.webp">
+          <div class="absolute inset-0 bg-slate-900 opacity-50"></div>
+        </div>
+        <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-tertiary-container rounded-xl -z-10 opacity-30 blur-2xl"></div>
+        <div class="absolute -top-6 -right-6 w-32 h-32 bg-primary-container rounded-full -z-10 opacity-50"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface-container-low py-32">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="space-y-24">
+        <div class="max-w-none">
+          <p class="text-3xl font-serif italic text-primary-dim mb-12 border-l-4 border-primary pl-8">
+            "The algorithm is a reflection of the architect. If we build without empathy, we automate inequity."
+          </p>
+          <p class="mb-8 text-lg leading-relaxed">In the digital age, data engineering is often viewed through a lens of pure optimization: faster pipelines, bigger warehouses, lower latency. But for those of us rooted in social work ethics, every row in a database represents a story, a struggle, or a human right.</p>
+          <p class="text-lg leading-relaxed">The intersection of social work and data engineering isn't just a niche — it's a necessity. We leverage the rigorous ethical frameworks of social advocacy to guide the technical decisions of big data architecture.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-surface-container-highest p-10 rounded-xl">
+            <span class="material-symbols-outlined text-4xl text-tertiary mb-6">search_check</span>
+            <h3 class="text-2xl font-bold mb-4 font-serif">Problem Identification</h3>
+            <p class="text-on-surface-variant leading-relaxed">Before a single line of code is written, we ask "Who is being left out?" Our identification process uses social work assessment tools to detect bias in historical data before it migrates into modern lakehouses.</p>
+          </div>
+          <div class="bg-primary-container/30 p-10 rounded-xl border border-primary/10">
+            <span class="material-symbols-outlined text-4xl text-primary mb-6">monitoring</span>
+            <h3 class="text-2xl font-bold mb-4 font-serif">Implementation &amp; Monitoring</h3>
+            <p class="text-on-secondary-container leading-relaxed">Engineering isn't "set and forget." We build ethical observability pipelines that monitor model drift not just for performance, but for disparate impact on marginalized communities.</p>
+          </div>
+          <div class="md:col-span-2 bg-primary-container/20 p-10 rounded-xl border border-primary/10">
+            <span class="material-symbols-outlined text-4xl text-emerald-600 mb-6">favorite</span>
+            <h3 class="text-2xl font-bold mb-4 font-serif">Personal Interest Projects</h3>
+            <p class="text-on-surface-variant leading-relaxed">Our heart beats for pro-bono collaborations. From building intake automation for local shelters to visualizing food desert data for policy change, we believe high-scale engineering belongs to everyone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 px-8">
+    <div class="max-w-5xl mx-auto bg-primary text-on-primary rounded-xl p-12 md:p-24 relative">
+      <div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+      <div class="relative z-10 text-center">
+        <h2 class="text-4xl md:text-6xl text-emerald-50 mb-8 font-bold leading-tight font-serif">Interested in a collaboration<br>for social good?</h2>
+        <p class="text-emerald-100/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto">Whether you're a non-profit needing technical scale or an engineering firm looking to implement ethical safeguards, we're ready to build.</p>
+        <a href="mailto:realmarcelnazare@gmail.com?subject=Collaboration%20for%20social%20good"
+           class="bg-primary-container text-on-primary-container px-10 py-5 rounded-full text-xl font-bold hover:bg-inverse-primary transition-all duration-300 shadow-xl inline-flex items-center gap-3">
+          Let's chat <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{template "base_footer" .}}{{end}}

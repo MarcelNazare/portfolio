@@ -1,0 +1,35 @@
+{{define "projects.html"}}{{template "base_head" .}}
+
+<section class="pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
+  <header class="mb-16 text-left">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="h-px w-12 bg-outline-variant/30"></div>
+      <span class="text-tertiary font-medium tracking-widest text-xs uppercase">Projects</span>
+    </div>
+    <h1 class="font-serif text-5xl md:text-7xl font-bold text-on-background tracking-tight leading-tight mb-6">
+      Social Good <span class="text-primary italic">Projects.</span>
+    </h1>
+    <p class="max-w-2xl text-on-surface-variant text-lg leading-relaxed">
+      Bridging the gap between scalable data architecture and meaningful social impact. Each project is a testament to how precise engineering can serve human needs.
+    </p>
+  </header>
+
+  {{if .ShowFilters}}
+  <div class="flex flex-wrap gap-2 mb-10">
+    <button hx-get="/projects" hx-target="#project-grid" hx-swap="innerHTML"
+            class="px-5 py-2 rounded-full border border-outline-variant/40 text-sm font-medium transition
+                   {{if eq .ActiveTag ""}}bg-primary text-on-primary border-primary{{else}}hover:border-primary hover:text-primary{{end}}">All</button>
+    {{range .Tags}}
+    <button hx-get="/projects?tag={{.}}" hx-target="#project-grid" hx-swap="innerHTML"
+            class="px-5 py-2 rounded-full border border-outline-variant/40 text-sm font-medium transition
+                   {{if eq $.ActiveTag .}}bg-primary text-on-primary border-primary{{else}}hover:border-primary hover:text-primary{{end}}">{{.}}</button>
+    {{end}}
+  </div>
+  {{end}}
+
+  <div id="project-grid">
+    {{template "project_list" .}}
+  </div>
+</section>
+
+{{template "base_footer" .}}{{end}}

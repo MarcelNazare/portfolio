@@ -1,0 +1,42 @@
+{{define "admin_posts_list.html"}}{{template "admin_head" .}}
+
+<div class="flex justify-between items-center mb-6">
+  <h1 class="font-serif text-3xl font-bold">Blog posts</h1>
+  <a href="/admin/posts/new" class="bg-primary text-on-primary px-5 py-2 rounded-lg font-semibold text-sm hover:bg-primary-dim transition">+ New post</a>
+</div>
+
+<div class="bg-white rounded-xl border border-outline-variant/20 overflow-hidden">
+  <table class="w-full">
+    <thead class="bg-surface-container-low text-left text-xs uppercase tracking-wide text-on-surface-variant">
+      <tr>
+        <th class="px-6 py-3">Title</th>
+        <th class="px-6 py-3">Published</th>
+        <th class="px-6 py-3 text-right">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-outline-variant/10">
+      {{range .Posts}}
+      <tr id="row-{{.ID}}">
+        <td class="px-6 py-4">
+          <div class="font-medium line-clamp-1">{{.Title}}</div>
+          <div class="text-xs text-on-surface-variant mt-0.5 font-mono">/blog/{{.Slug}}</div>
+        </td>
+        <td class="px-6 py-4 text-sm text-on-surface-variant">{{.PublishedAt.Format "Jan 2, 2006"}}</td>
+        <td class="px-6 py-4 text-right text-sm whitespace-nowrap">
+          <a href="/blog/{{.Slug}}" target="_blank" class="text-on-surface-variant hover:text-primary mr-3">View</a>
+          <a href="/admin/posts/{{.ID}}/edit" class="text-primary hover:underline mr-3">Edit</a>
+          <button hx-delete="/admin/posts/{{.ID}}" hx-target="closest tr" hx-swap="outerHTML swap:200ms"
+                  hx-confirm="Delete '{{.Title}}'? This cannot be undone."
+                  class="text-red-600 hover:underline">Delete</button>
+        </td>
+      </tr>
+      {{else}}
+      <tr><td colspan="3" class="px-6 py-12 text-center text-on-surface-variant">
+        No posts yet. <a href="/admin/posts/new" class="text-primary underline">Write the first one</a>.
+      </td></tr>
+      {{end}}
+    </tbody>
+  </table>
+</div>
+
+{{template "admin_footer" .}}{{end}}

@@ -1,0 +1,123 @@
+{{define "techstack.html"}}{{template "base_head" .}}
+
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <header class="mb-24 flex flex-col md:flex-row items-end gap-8">
+    <div class="flex-1">
+      <span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant text-xs font-bold uppercase tracking-widest mb-6">Capabilities</span>
+      <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-on-background mb-8 leading-[1.1] font-serif">The Toolkit.</h1>
+      <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed">
+        A curated ecosystem of analytical engines and data architectures designed to translate complex social variables into actionable human insights.
+      </p>
+    </div>
+    <div class="w-full md:w-1/3 aspect-square bg-primary-container rounded-xl overflow-hidden relative rotate-3 shadow-2xl">
+      <img alt="Data visualization conceptual art" class="w-full h-full object-cover mix-blend-overlay grayscale hover:grayscale-0 transition-all duration-700" src="/static/tech-hero.webp">
+      <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+    </div>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+    <section class="md:col-span-8 bg-surface-container-low p-8 md:p-12 rounded-xl relative overflow-hidden group">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+      <div class="flex items-center gap-4 mb-10">
+        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white"><span class="material-symbols-outlined">terminal</span></div>
+        <h2 class="text-4xl font-bold font-serif">The Core</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 relative z-10">
+        <div class="space-y-4">
+          <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+            Python <span class="text-xs bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded-full font-body">v3.12+</span>
+          </h3>
+          <p class="text-on-surface-variant leading-relaxed">The backbone of my analytical logic, enabling custom ETL pipelines and sophisticated statistical modeling.</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 bg-surface-container-highest rounded-full text-sm font-medium">NumPy</span>
+            <span class="px-3 py-1 bg-surface-container-highest rounded-full text-sm font-medium">Pandas</span>
+            <span class="px-3 py-1 bg-surface-container-highest rounded-full text-sm font-medium">Polars</span>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <h3 class="text-xl font-bold text-primary">Visual Narrative</h3>
+          <p class="text-on-surface-variant leading-relaxed">Turning raw vectors into visual stories that speak to both engineers and stakeholders.</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-sm font-medium">Matplotlib</span>
+            <span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-sm font-medium">Plotly</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="md:col-span-4 bg-surface-container-high p-8 md:p-12 rounded-xl border border-outline-variant/10">
+      <div class="flex items-center gap-4 mb-10">
+        <div class="w-12 h-12 rounded-full bg-tertiary flex items-center justify-center text-white"><span class="material-symbols-outlined">database</span></div>
+        <h2 class="text-4xl font-bold font-serif">The Storage</h2>
+      </div>
+      <div class="space-y-8">
+        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+          <div class="flex justify-between items-center mb-3"><span class="font-bold text-lg">DuckDB</span><span class="text-tertiary material-symbols-outlined">speed</span></div>
+          <p class="text-sm text-on-surface-variant">In-process analytical database for lightning-fast local processing and parquet integration.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+          <div class="flex justify-between items-center mb-3"><span class="font-bold text-lg">PostgreSQL</span><span class="text-tertiary material-symbols-outlined">storage</span></div>
+          <p class="text-sm text-on-surface-variant">The reliable standard for relational data, complex joins, and transactional integrity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="md:col-span-12 bg-white p-8 md:p-16 rounded-xl shadow-[0_32px_64px_-16px_rgba(45,106,79,0.08)] relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-tertiary to-secondary"></div>
+      <h2 class="text-4xl font-bold mb-16 text-center font-serif">The Workflow</h2>
+      <div class="relative flex flex-col md:flex-row justify-between items-center gap-12 md:gap-4">
+        <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 border-t-2 border-dashed border-outline-variant opacity-30 -z-10"></div>
+        <div class="flex flex-col items-center w-full md:w-1/4">
+          <div class="w-24 h-24 rounded-full bg-primary-container flex items-center justify-center mb-6 ring-8 ring-background">
+            <span class="material-symbols-outlined text-4xl text-primary">input</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Extract</h3>
+          <p class="text-center text-sm text-on-surface-variant max-w-[200px]">Gathering fragmented data from APIs, logs, and legacy systems.</p>
+        </div>
+        <div class="flex flex-col items-center w-full md:w-1/4">
+          <div class="w-24 h-24 rounded-full bg-secondary-container flex items-center justify-center mb-6 ring-8 ring-background">
+            <span class="material-symbols-outlined text-4xl text-secondary">cloud_upload</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Load</h3>
+          <p class="text-center text-sm text-on-surface-variant max-w-[200px]">Staging raw data in cloud-native or local warehouses for durability.</p>
+        </div>
+        <div class="flex flex-col items-center w-full md:w-1/4">
+          <div class="w-24 h-24 rounded-full bg-tertiary-container flex items-center justify-center mb-6 ring-8 ring-background">
+            <span class="material-symbols-outlined text-4xl text-on-tertiary-container">auto_mode</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Transform</h3>
+          <p class="text-center text-sm text-on-surface-variant max-w-[200px]">Applying business logic, cleaning noise, and aggregating for truth.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-surface-container-high/50 p-8 rounded-xl">
+        <h2 class="text-3xl font-bold mb-4 font-serif">The Vision</h2>
+        <p class="text-on-surface-variant mb-6 leading-relaxed">
+          BI tools are more than just dashboards; they are the interface where data meets decision-makers. I leverage industry leaders to ensure insights are accessible.
+        </p>
+        <div class="flex gap-3 flex-wrap">
+          <span class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-bold border border-outline-variant/10 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-yellow-400"></span>Power BI
+          </span>
+          <span class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-bold border border-outline-variant/10 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span>Tableau
+          </span>
+        </div>
+      </div>
+      <div class="bg-primary p-8 md:p-12 rounded-xl text-on-primary relative overflow-hidden flex flex-col justify-center">
+        <div class="absolute -bottom-10 -right-10 opacity-10">
+          <span class="material-symbols-outlined" style="font-size:160px; font-variation-settings:'FILL' 1;">psychology</span>
+        </div>
+        <h3 class="text-3xl font-bold mb-4 font-serif italic">Ready to optimize your pipeline?</h3>
+        <p class="mb-8 text-on-primary/80">From data sourcing to executive reporting, I build architectures that scale with your mission.</p>
+        <a class="inline-flex items-center gap-2 bg-white text-primary px-8 py-3 rounded-full font-bold w-fit hover:bg-primary-container transition-colors" href="/projects">
+          View Project History <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+
+{{template "base_footer" .}}{{end}}

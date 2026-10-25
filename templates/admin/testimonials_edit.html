@@ -1,0 +1,43 @@
+{{define "admin_testimonial_edit.html"}}{{template "admin_head" .}}
+{{with .Testimonial}}
+<div class="flex justify-between items-center mb-6">
+  <div>
+    <a href="/admin/testimonials" class="text-sm text-on-surface-variant hover:text-primary">← Back to testimonials</a>
+    <h1 class="font-serif text-3xl font-bold mt-2">{{if $.IsNew}}New testimonial{{else}}Edit testimonial{{end}}</h1>
+  </div>
+</div>
+
+<div id="flash"></div>
+
+<form hx-post="{{if $.IsNew}}/admin/testimonials{{else}}/admin/testimonials/{{.ID}}{{end}}"
+      hx-target="#flash" hx-swap="innerHTML"
+      class="max-w-2xl bg-white rounded-xl border border-outline-variant/20 p-6 space-y-4">
+
+  <label class="block">
+    <span class="text-sm font-semibold">Author <span class="text-red-500">*</span></span>
+    <input name="author" required value="{{.Author}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none" placeholder="e.g. Amara O.">
+  </label>
+  
+  <label class="block">
+    <span class="text-sm font-semibold">Role / Company</span>
+    <input name="role" value="{{.Role}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none" placeholder="e.g. Program Director, Regional NGO">
+  </label>
+
+  <label class="block">
+    <span class="text-sm font-semibold">Quote <span class="text-red-500">*</span></span>
+    <textarea name="quote" required rows="4" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none" placeholder="The testimonial text...">{{.Quote}}</textarea>
+  </label>
+
+  <label class="block">
+    <span class="text-sm font-semibold">Source</span>
+    <input name="source" value="{{.Source}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none" placeholder="e.g. Upwork · 5.0★ or Client reference">
+  </label>
+
+  <div class="pt-4 flex justify-end">
+    <button type="submit" class="bg-primary text-on-primary px-6 py-2 rounded-lg font-semibold hover:bg-primary-dim transition">
+      {{if $.IsNew}}Create testimonial{{else}}Save changes{{end}}
+    </button>
+  </div>
+</form>
+{{end}}
+{{template "admin_footer" .}}{{end}}

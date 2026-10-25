@@ -1,0 +1,159 @@
+{{define "admin_project_edit.html"}}{{template "admin_head" .}}
+{{with .Project}}
+<div class="flex justify-between items-center mb-6">
+  <div>
+    <a href="/admin/projects" class="text-sm text-on-surface-variant hover:text-primary">← Back to projects</a>
+    <h1 class="font-serif text-3xl font-bold mt-2">{{if $.IsNew}}New project{{else}}Edit project{{end}}</h1>
+  </div>
+  {{if not $.IsNew}}
+  <a href="/projects/{{.Slug}}" target="_blank" class="text-sm text-on-surface-variant hover:text-primary">View live ↗</a>
+  {{end}}
+</div>
+
+<div id="flash"></div>
+
+<form hx-post="{{if $.IsNew}}/admin/projects{{else}}/admin/projects/{{.ID}}{{end}}"
+      hx-target="#flash" hx-swap="innerHTML"
+      class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  <div class="lg:col-span-2 space-y-6">
+    <div class="bg-white rounded-xl border border-outline-variant/20 p-6 space-y-4">
+      <label class="block">
+        <span class="text-sm font-semibold">Title</span>
+        <input id="title" name="title" required value="{{.Title}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none">
+      </label>
+      <label class="block">
+        <span class="text-sm font-semibold">Slug</span>
+        <input id="slug" name="slug" required value="{{.Slug}}" data-auto="{{if $.IsNew}}true{{else}}false{{end}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg font-mono text-sm focus:border-primary focus:outline-none">
+      </label>
+      <label class="block">
+        <span class="text-sm font-semibold">Tagline</span>
+        <input name="tagline" value="{{.Tagline}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none">
+      </label>
+      <label class="block">
+        <span class="text-sm font-semibold">Impact metric <span class="text-on-surface-variant font-normal">(short, e.g. "14d → 4h")</span></span>
+        <input name="impact_metric" value="{{.ImpactMetric}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg font-mono text-sm focus:border-primary focus:outline-none">
+      </label>
+    </div>
+
+    <div class="bg-white rounded-xl border border-outline-variant/20 p-6 space-y-4">
+      <label class="block"><span class="text-sm font-semibold">Problem</span>
+        <textarea name="problem" rows="3" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none">{{.Problem}}</textarea>
+      </label>
+      <label class="block"><span class="text-sm font-semibold">Approach</span>
+        <textarea name="approach" rows="3" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none">{{.Approach}}</textarea>
+      </label>
+      <label class="block"><span class="text-sm font-semibold">Impact</span>
+        <textarea name="impact" rows="3" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none">{{.Impact}}</textarea>
+      </label>
+    </div>
+
+    <div class="bg-white rounded-xl border border-outline-variant/20 p-6">
+      <label class="block">
+        <span class="text-sm font-semibold">Case study body (Markdown)</span>
+        <textarea id="body-editor" name="body_markdown" rows="20" class="mt-1 w-full">{{.BodyMarkdown}}</textarea>
+      </label>
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    <div class="bg-white rounded-xl border border-outline-variant/20 p-6 space-y-4">
+      <label class="block">
+        <span class="text-sm font-semibold">Kind</span>
+        <select name="kind" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg">
+          <option value="project"    {{if eq .Kind "project"}}selected{{end}}>Project</option>
+          <option value="case_study" {{if eq .Kind "case_study"}}selected{{end}}>Case study</option>
+        </select>
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" name="featured" {{if .Featured}}checked{{end}}>
+        <span class="text-sm">Featured on home page</span>
+      </label>
+    </div>
+
+    <div class="bg-white rounded-xl border border-outline-variant/20 p-6 space-y-3">
+      <label class="block">
+        <span class="text-sm font-semibold">Image URL</span>
+        <input name="image_url" value="{{.ImageURL}}" placeholder="/uploads/foo.webp" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg text-sm">
+      </label>
+      <label class="block cursor-pointer">
+        <span class="text-xs text-on-surface-variant">Upload an image:</span>
+        <input type="file" id="image-upload" accept="image/*" class="mt-1 w-full text-xs">
+      </label>
+      {{if .ImageURL}}<img src="{{.ImageURL}}" alt="" class="w-full rounded-lg border border-outline-variant/20">{{end}}
+    </div>
+
+    <div class="bg-white rounded-xl border border-outline-variant/20 p-6 space-y-4">
+      <label class="block">
+        <span class="text-sm font-semibold">Tools <span class="text-on-surface-variant font-normal">(comma-separated)</span></span>
+        <input name="tools" value="{{join .Tools ", "}}" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg text-sm">
+      </label>
+      <label class="block"><span class="text-sm font-semibold">Repo URL</span>
+        <input name="repo_url" value="{{.RepoURL}}" type="url" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg text-sm">
+      </label>
+      <label class="block"><span class="text-sm font-semibold">Demo URL</span>
+        <input name="demo_url" value="{{.DemoURL}}" type="url" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg text-sm">
+      </label>
+      <label class="block"><span class="text-sm font-semibold">Data URL</span>
+        <input name="data_url" value="{{.DataURL}}" type="url" class="mt-1 w-full px-3 py-2 border border-outline-variant/40 rounded-lg text-sm">
+      </label>
+    </div>
+
+    <div class="bg-white rounded-xl border border-outline-variant/20 p-6">
+      <button type="submit" class="w-full bg-primary text-on-primary py-3 rounded-lg font-semibold hover:bg-primary-dim transition">
+        {{if $.IsNew}}Create project{{else}}Save changes{{end}}
+      </button>
+    </div>
+  </div>
+</form>
+
+<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const title = document.getElementById('title');
+  const slug  = document.getElementById('slug');
+  if (title && slug) {
+    title.addEventListener('input', () => {
+      if (slug.dataset.auto === 'true') {
+        slug.value = title.value.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      }
+    });
+    slug.addEventListener('input', () => { slug.dataset.auto = 'false'; });
+  }
+
+  const easyMDE = new EasyMDE({
+    element: document.getElementById('body-editor'),
+    uploadImage: true,
+    imageUploadEndpoint: '/admin/upload',
+    imagePathAbsolute: false,
+    spellChecker: false,
+    autoDownloadFontAwesome: true,
+    toolbar: ['bold','italic','heading','|','quote','unordered-list','ordered-list','|',
+              'link','image','upload-image','|','preview','side-by-side','fullscreen','|','guide'],
+    status: ['lines','words'],
+  });
+
+  document.body.addEventListener('htmx:configRequest', () => {
+    if (easyMDE && easyMDE.codemirror) easyMDE.codemirror.save();
+  });
+
+  const uploadInput = document.getElementById('image-upload');
+  if (uploadInput) {
+    uploadInput.addEventListener('change', async () => {
+      const file = uploadInput.files[0];
+      if (!file) return;
+      const fd = new FormData();
+      fd.append('image', file);
+      const res = await fetch('/admin/upload', { method: 'POST', body: fd });
+      if (res.ok) {
+        const { data } = await res.json();
+        const urlInput = document.querySelector('input[name="image_url"]');
+        if (urlInput) urlInput.value = data.filePath;
+      }
+    });
+  }
+});
+</script>
+{{end}}
+{{template "admin_footer" .}}{{end}}

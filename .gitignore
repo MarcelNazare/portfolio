@@ -1,0 +1,35 @@
+# ─── Environment Variables ──────────────────────────────────────────
+.env
+.env.local
+
+# ─── Go Binaries & Builds ───────────────────────────────────────────
+portfolio
+portfolio.exe
+tmp/
+*.test
+*.out
+
+# ─── Tailwind & Node ────────────────────────────────────────────────
+tailwindcss
+tailwindcss.exe
+tailwindcss-*
+node_modules/
+
+# ─── Databases (SQLite) ─────────────────────────────────────────────
+portfolio.db
+portfolio.db-wal
+portfolio.db-shm
+*.db
+*.sqlite
+
+# ─── Uploaded Files ─────────────────────────────────────────────────
+uploads/
+!uploads/.gitkeep
+
+# ─── OS & Editor Specific ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+hash.go

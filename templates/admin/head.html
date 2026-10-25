@@ -1,0 +1,62 @@
+{{define "admin_head"}}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Title}}</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://unpkg.com/htmx.org@2.0.2" defer></script>
+<meta name="csrf-token" content="{{.CSRF}}">
+<script>
+  // Automatically attach CSRF token to every HTMX request
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('htmx:configRequest', function(evt) {
+      var token = document.querySelector('meta[name="csrf-token"]');
+      if (token) evt.detail.headers['X-CSRF-Token'] = token.content;
+    });
+  });
+</script>
+</head>
+<body class="bg-surface-container-low min-h-screen text-on-background font-body">
+
+<header class="bg-white border-b border-outline-variant/20 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <a href="/admin" class="font-serif font-bold text-lg text-primary">marcel<span class="text-on-surface-variant">.admin</span></a>
+      <nav class="flex gap-6 text-sm">
+        <a href="/admin"              class="hover:text-primary {{if eq .Active "/admin"}}text-primary font-semibold{{end}}">Dashboard</a>
+        <a href="/admin/projects"     class="hover:text-primary {{if eq .Active "/admin/projects"}}text-primary font-semibold{{end}}">Projects</a>
+        <a href="/admin/posts"        class="hover:text-primary {{if eq .Active "/admin/posts"}}text-primary font-semibold{{end}}">Posts</a>
+        <a href="/admin/testimonials" class="hover:text-primary {{if eq .Active "/admin/testimonials"}}text-primary font-semibold{{end}}">Testimonials</a>
+      </nav>
+    </div>
+        <div class="flex items-center gap-4 text-sm">
+      <a href="/" target="_blank" class="text-on-surface-variant hover:text-primary">View site ↗</a>
+      <span class="text-outline-variant">|</span>
+      <form action="/admin/logout" method="POST" class="m-0">
+        <button type="submit" class="text-slate-500 hover:text-red-600 font-medium transition-colors cursor-pointer">
+          Log out
+        </button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-8">
+{{end}}
+
+{{define "admin_footer"}}
+</main>
+</body>
+</html>
+{{end}}
+
+{{define "admin_flash"}}
+{{if .Error}}
+<div class="bg-red-50 text-red-700 px-4 py-3 rounded-lg mb-6 border border-red-200">{{.Error}}</div>
+{{end}}
+{{if .Success}}
+<div class="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-lg mb-6 border border-emerald-200">{{.Success}}</div>
+{{end}}
+{{end}}

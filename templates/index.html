@@ -1,0 +1,179 @@
+{{define "index.html"}}{{template "base_head" .}}
+
+<section class="relative min-h-[921px] flex items-center px-6 md:px-12 lg:px-24 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-container/30 to-background -z-10"></div>
+  <div class="absolute top-20 right-0 w-96 h-96 bg-tertiary/5 rounded-full blur-3xl -z-10"></div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full max-w-7xl mx-auto">
+    <div class="lg:col-span-7 space-y-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-secondary-fixed-dim rounded-full text-on-secondary-fixed-variant text-sm font-medium">
+        <span class="material-symbols-outlined text-sm">code</span><span>Data × Social Work</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl leading-tight font-bold font-serif text-on-background tracking-tight">
+        Marcel Nazare: <span class="italic text-primary">Engineering</span> Data for Social Good.
+      </h1>
+      <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed">
+        Blending Python, social work practice, and development studies to build tech tools that matter. Bridging the gap between raw data and human outcomes.
+      </p>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a href="#contact" class="inline-flex items-center justify-center bg-primary text-on-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-dim transition-all shadow-lg shadow-primary/10">Get in Touch</a>
+        <a href="/projects" class="inline-flex items-center justify-center bg-surface-container-high text-on-surface px-8 py-4 rounded-full text-lg font-semibold hover:bg-surface-container-highest transition-all">View My Work</a>
+      </div>
+    </div>
+    <div class="lg:col-span-5 relative">
+      <div class="relative z-10 rounded-[2rem] overflow-hidden aspect-[4/5] shadow-2xl">
+        <img alt="Portrait of Marcel Nazare" class="w-full h-full object-cover" src="/static/portrait.webp">
+        <div class="absolute inset-0 bg-slate-600/10"></div>
+      </div>
+      <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl z-20 border border-outline-variant/10">
+        <div class="flex gap-1 mb-2">
+          <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+          <div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></div>
+          <div class="w-2 h-2 rounded-full bg-primary"></div>
+        </div>
+        <p class="text-xs font-mono text-slate-500">pipeline_status: <span class="text-emerald-600">active</span></p>
+      </div>
+      <div class="absolute -top-10 -right-10 w-48 h-48 border-2 border-dashed border-outline-variant/20 rounded-full animate-spin-slow -z-10"></div>
+    </div>
+  </div>
+</section>
+
+<!--
+<section class="bg-surface-container-low py-12 px-6 md:px-12 lg:px-24">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+    <div>
+      <div class="text-4xl md:text-5xl font-serif font-bold text-primary">{{.Stats.reporting_lag}}</div>
+      <div class="text-sm uppercase tracking-wider text-on-surface-variant mt-2">reporting lag reduced</div>
+    </div>
+    <div>
+      <div class="text-4xl md:text-5xl font-serif font-bold text-primary">{{.Stats.parcels_reallocated}}</div>
+      <div class="text-sm uppercase tracking-wider text-on-surface-variant mt-2">aid parcels reallocated</div>
+    </div>
+    <div>
+      <div class="text-4xl md:text-5xl font-serif font-bold text-primary">{{.Stats.clinics_live}}</div>
+      <div class="text-sm uppercase tracking-wider text-on-surface-variant mt-2">clinics on open-source pipelines</div>
+    </div>
+  </div>
+</section>
+-->
+<section class="py-24 bg-surface-container-low text-on-background">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <div class="top-32">
+        <h2 class="text-4xl md:text-5xl font-bold font-serif mb-8 leading-tight">The Vibe: Interest Over Corporate Hunt</h2>
+        <div class="space-y-6 text-lg text-on-surface-variant leading-relaxed">
+          <p>I don't build dashboards for the sake of quarterly profits. I build them because a local NGO needs to track food security, or a development program needs to measure the long-term impact of its interventions.</p>
+          <p>My philosophy is rooted in <strong>Solarpunk Modernism</strong> — the belief that technology shouldn't just be "neutral," it should be intentionally designed to foster a more equitable and green future.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-6">
+        <div class="bg-surface-container-highest p-8 rounded-xl space-y-4">
+          <span class="material-symbols-outlined text-4xl text-primary">psychology</span>
+          <h3 class="text-2xl font-bold font-serif">Human-Centric Ethics</h3>
+          <p class="text-on-surface-variant">Data is never just numbers; it's people's stories. My social work background ensures privacy and dignity are at the core of every architectural decision.</p>
+        </div>
+        <div class="bg-surface-container-highest p-8 rounded-xl space-y-4 md:translate-x-12">
+          <span class="material-symbols-outlined text-4xl text-tertiary">eco</span>
+          <h3 class="text-2xl font-bold font-serif">Sustainable Tech</h3>
+          <p class="text-on-surface-variant">Lightweight, efficient pipelines that run on minimal resources — for organizations in developing regions.</p>
+        </div>
+        <div class="bg-surface-container-highest p-8 rounded-xl space-y-4">
+          <span class="material-symbols-outlined text-4xl text-primary">diversity_3</span>
+          <h3 class="text-2xl font-bold font-serif">Collective Impact</h3>
+          <p class="text-on-surface-variant">Technology is a tool for community empowerment. I prioritize open-source solutions maintained by the communities they serve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{if .Projects}}
+<section class="py-24 bg-background text-on-background">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+    <div class="mb-16 max-w-3xl">
+      <h2 class="text-4xl md:text-6xl font-bold font-serif mb-6">Case Studies</h2>
+      <p class="text-xl text-on-surface-variant">Each one starts with a real problem, shows the approach, and ends with measurable impact.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {{range .Projects}}{{template "project_card" .}}{{end}}
+    </div>
+    <div class="mt-16 text-center">
+      <a href="/projects" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+        All case studies <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+{{end}}
+
+{{if .Testimonials}}
+<section class="py-24 bg-surface-container-low text-on-background">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+    <h2 class="text-4xl md:text-5xl font-bold font-serif mb-16">What collaborators say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {{range .Testimonials}}
+      <blockquote class="bg-white border-l-4 border-primary rounded-2xl p-8 shadow-sm">
+        <p class="text-lg text-on-surface-variant italic leading-relaxed mb-4">"{{.Quote}}"</p>
+        <footer class="text-sm text-on-surface-variant">
+          — <strong class="text-on-background">{{.Author}}</strong>{{if .Role}}, {{.Role}}{{end}}
+          {{if .Source}}<span class="text-primary ml-2">· {{.Source}}</span>{{end}}
+        </footer>
+      </blockquote>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+
+<section class="py-32 bg-background text-on-background">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+    <div class="mb-16 max-w-3xl">
+      <h2 class="text-4xl md:text-6xl font-bold font-serif mb-6">Technical Focus</h2>
+      <p class="text-xl text-on-surface-variant">Where the rigor of engineering meets the nuance of social inquiry.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="group bg-surface-container-low p-10 rounded-xl hover:bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 border border-transparent hover:border-primary/10">
+        <div class="w-16 h-16 bg-primary-container flex items-center justify-center rounded-full mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-on-primary-container text-3xl">cleaning_services</span>
+        </div>
+        <h4 class="text-2xl font-bold font-serif mb-4">Ethical Data Cleaning</h4>
+        <p class="text-on-surface-variant mb-6 leading-relaxed">Systematic removal of bias and noise while preserving minority representations in social datasets.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full text-xs font-medium">Pandas</span>
+          <span class="px-3 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full text-xs font-medium">NumPy</span>
+        </div>
+      </div>
+      <div class="group bg-surface-container-low p-10 rounded-xl hover:bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-tertiary/5 border border-transparent hover:border-tertiary/10">
+        <div class="w-16 h-16 bg-tertiary-container flex items-center justify-center rounded-full mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-on-tertiary-container text-3xl">query_stats</span>
+        </div>
+        <h4 class="text-2xl font-bold font-serif mb-4">Narrative EDA</h4>
+        <p class="text-on-surface-variant mb-6 leading-relaxed">Visual storytelling through Exploratory Data Analysis that identifies hidden systemic barriers in development programs.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full text-xs font-medium">Matplotlib</span>
+          <span class="px-3 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full text-xs font-medium">Seaborn</span>
+        </div>
+      </div>
+      <div class="group bg-surface-container-low p-10 rounded-xl hover:bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 border border-transparent hover:border-primary/10">
+        <div class="w-16 h-16 bg-primary flex items-center justify-center rounded-full mb-8 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-on-primary text-3xl">lightbulb</span>
+        </div>
+        <h4 class="text-2xl font-bold font-serif mb-4">Root Problem ID</h4>
+        <p class="text-on-surface-variant mb-6 leading-relaxed">Translating vague social challenges into concrete technical requirements and measurable data points.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full text-xs font-medium">SQL</span>
+          <span class="px-3 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full text-xs font-medium">UML</span>
+        </div>
+      </div>
+    </div>
+    <div class="mt-24 bg-primary text-on-primary p-12 md:p-20 rounded-[3rem] relative overflow-hidden">
+      <div class="absolute top-0 right-0 p-8 opacity-10">
+        <span class="material-symbols-outlined" style="font-size:20rem;">format_quote</span>
+      </div>
+      <blockquote class="text-3xl md:text-5xl font-serif leading-tight max-w-4xl relative z-10 italic">
+        "The goal isn't just to build bigger databases, but to build smarter bridges between data and dignity."
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+{{template "base_footer" .}}{{end}}

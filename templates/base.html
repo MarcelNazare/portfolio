@@ -1,0 +1,123 @@
+{{define "base_head"}}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Title}}</title>
+<meta name="description" content="Marcel Nazare — data analyst blending Python, social work practice, and development studies to build tech that matters.">
+<link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://unpkg.com/htmx.org@2.0.2" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<meta name="csrf-token" content="{{.CSRF}}">
+<script>
+  // Automatically attach CSRF token to every HTMX request
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('htmx:configRequest', function(evt) {
+      var token = document.querySelector('meta[name="csrf-token"]');
+      if (token) evt.detail.headers['X-CSRF-Token'] = token.content;
+    });
+  });
+</script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container font-body antialiased">
+<header>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 md:px-8 py-3 bg-white/70 backdrop-blur-lg rounded-full mt-4 mx-auto max-w-5xl shadow-[0_8px_32px_rgba(45,106,79,0.05)]">
+    <div class="text-xl md:text-2xl font-serif font-bold text-primary">
+      <a href="/">Marcel Nazare</a>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="/"           class="{{if eq .Active "/"}}text-emerald-600{{else}}text-slate-600 hover:text-emerald-600{{end}} font-medium transition-colors font-serif text-lg tracking-tight">Home</a>
+      <a href="/techstack"  class="{{if eq .Active "/techstack"}}text-emerald-600{{else}}text-slate-600 hover:text-emerald-600{{end}} font-medium transition-colors font-serif text-lg tracking-tight">Tech Stack</a>
+      <a href="/philosophy" class="{{if eq .Active "/philosophy"}}text-emerald-600{{else}}text-slate-600 hover:text-emerald-600{{end}} font-medium transition-colors font-serif text-lg tracking-tight">Philosophy</a>
+      <a href="/projects"   class="{{if eq .Active "/projects"}}text-emerald-600{{else}}text-slate-600 hover:text-emerald-600{{end}} font-medium transition-colors font-serif text-lg tracking-tight">Projects</a>
+      <a href="/blog"       class="{{if eq .Active "/blog"}}text-emerald-600{{else}}text-slate-600 hover:text-emerald-600{{end}} font-medium transition-colors font-serif text-lg tracking-tight">Blog</a>
+    </div>
+    <a href="/#contact" class="hidden md:inline-flex bg-primary text-on-primary px-6 py-2 rounded-full font-medium scale-95 active:scale-90 transition-transform">Get in Touch</a>
+    <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open menu" aria-expanded="false">
+      <span class="block w-6 h-0.5 bg-emerald-900 mb-1.5 rounded"></span>
+      <span class="block w-6 h-0.5 bg-emerald-900 mb-1.5 rounded"></span>
+      <span class="block w-6 h-0.5 bg-emerald-900 rounded"></span>
+    </button>
+  </nav>
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
+  <div id="mobile-menu" class="fixed top-6 left-4 right-4 z-50 bg-white rounded-2xl shadow-2xl p-6 flex flex-col gap-4 opacity-0 scale-95 pointer-events-none transition-all duration-300 md:hidden">
+    <button id="mobile-menu-close" class="self-end w-10 h-10 rounded-full flex items-center justify-center text-slate-600 hover:text-emerald-600" aria-label="Close menu" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+    </button>
+    <a href="/"           class="text-slate-600 font-medium hover:text-emerald-600 font-serif text-lg">Home</a>
+    <a href="/techstack"  class="text-slate-600 font-medium hover:text-emerald-600 font-serif text-lg">Tech Stack</a>
+    <a href="/philosophy" class="text-slate-600 font-medium hover:text-emerald-600 font-serif text-lg">Philosophy</a>
+    <a href="/projects"   class="text-slate-600 font-medium hover:text-emerald-600 font-serif text-lg">Projects</a>
+    <a href="/blog"       class="text-slate-600 font-medium hover:text-emerald-600 font-serif text-lg">Blog</a>
+    <a href="/#contact"   class="w-full inline-flex justify-center bg-primary text-on-primary px-6 py-3 rounded-full font-medium mt-2">Get in Touch</a>
+  </div>
+</header>
+<main class="pt-24">
+{{end}}
+
+{{define "base_footer"}}
+</main>
+<footer id="contact" class="w-full bg-primary text-on-primary py-16 px-6 sm:px-10 lg:px-16">
+  <div class="mx-auto max-w-6xl space-y-10">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div class="space-y-3">
+        <p class="text-sm uppercase tracking-[0.32em] text-slate-200">Stay connected</p>
+        <h2 class="text-3xl sm:text-4xl font-serif font-semibold text-white">Let's build something meaningful together.</h2>
+      </div>
+      <p class="max-w-xl text-sm leading-7 text-slate-200">Reach out by email or social — I'm open to collaboration, data product, and social impact work.</p>
+    </div>
+    <div class="grid gap-8 lg:grid-cols-[1.1fr_auto] items-start">
+      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-[0_24px_80px_rgba(15,23,42,0.24)] backdrop-blur-xl">
+        <p class="text-sm uppercase tracking-[0.32em] text-slate-200 mb-4">Contact</p>
+        <div class="space-y-4 text-slate-200">
+          <p class="font-medium text-white">Marcel Nazare, The Analyst</p>
+          <p class="text-sm leading-7">Data Analysis & Engineering · Social Work · Product Storytelling</p>
+          <p class="text-sm leading-7"><a href="mailto:realmarcelnazare@gmail.com" class="underline">realmarcelnazare@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="grid gap-3">
+        <a class="inline-flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-slate-100 hover:bg-white/10" href="https://github.com/MarcelNazare" target="_blank" rel="noopener"><span class="material-symbols-outlined text-lg">code</span>GitHub</a>
+        <a class="inline-flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-slate-100 hover:bg-white/10" href="mailto:realmarcelnazare@gmail.com"><span class="material-symbols-outlined text-lg">email</span>Email</a>
+        <a class="inline-flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-slate-100 hover:bg-white/10" href="https://medium.com/@realmarcelnazare" target="_blank" rel="noopener"><span class="material-symbols-outlined text-lg">article</span>Medium</a>
+        <a class="inline-flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-slate-100 hover:bg-white/10" href="https://www.linkedin.com/in/takudzwa-marcel-nazare/" target="_blank" rel="noopener"><span class="material-symbols-outlined text-lg">work</span>LinkedIn</a>
+        <a class="inline-flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-slate-100 hover:bg-white/10" href="https://twitter.com/AnalystMarcel" target="_blank" rel="noopener"><span class="material-symbols-outlined text-lg">chat_bubble</span>Twitter</a>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8 text-sm text-slate-200">
+      <p>&copy; 2026 Marcel Nazare, The Analyst. Building for Social Good.</p>
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("mobile-menu-btn");
+  const close = document.getElementById("mobile-menu-close");
+  const menu = document.getElementById("mobile-menu");
+  const overlay = document.getElementById("mobile-menu-overlay");
+  let open = false;
+  function toggle() {
+    open = !open;
+    btn.setAttribute("aria-expanded", open);
+    const on = ["opacity-100","scale-100","pointer-events-auto"];
+    const off = ["opacity-0","scale-95","pointer-events-none"];
+    [menu, overlay].forEach(el => {
+      (open ? off : on).forEach(c => el.classList.remove(c));
+      (open ? on : off).forEach(c => el.classList.add(c));
+    });
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+  btn.addEventListener("click", toggle);
+  close.addEventListener("click", toggle);
+  overlay.addEventListener("click", toggle);
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => open && toggle()));
+});
+</script>
+</body>
+</html>
+{{end}}

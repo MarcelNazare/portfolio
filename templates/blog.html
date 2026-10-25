@@ -1,0 +1,45 @@
+{{define "blog.html"}}{{template "base_head" .}}
+
+<section class="pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
+  <header class="mb-16 text-left">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="h-px w-12 bg-outline-variant/30"></div>
+      <span class="text-tertiary font-medium tracking-widest text-xs uppercase">Blog</span>
+    </div>
+    <h1 class="font-serif text-5xl md:text-7xl font-bold text-on-background tracking-tight leading-tight mb-6">
+      Insights &amp; Stories <span class="text-primary italic">from the Field.</span>
+    </h1>
+    <p class="max-w-2xl text-on-surface-variant text-lg leading-relaxed">
+      Reflections, technical deep-dives, and lessons learned at the intersection of data, engineering, and social good.
+    </p>
+  </header>
+
+  {{if .Posts}}
+  <ul class="flex flex-wrap justify-center gap-8 list-none p-0 m-0">
+    {{range .Posts}}
+    <li class="w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.333%-2rem)] bg-surface-container-low rounded-xl shadow hover:shadow-lg transition-all border border-outline-variant/20 flex flex-col">
+      <a href="/blog/{{.Slug}}" class="flex flex-col h-full no-underline">
+        {{if .ImageURL}}
+        <img src="{{.ImageURL}}" alt="{{.Title}}" loading="lazy" decoding="async" width="720" height="360" class="rounded-t-xl w-full h-48 object-cover mb-4">
+        {{end}}
+        <div class="flex-1 flex flex-col p-6">
+          <h3 class="font-serif text-xl font-bold mb-2 text-on-background">{{.Title}}</h3>
+          <p class="text-on-surface-variant mb-4 line-clamp-3">{{.Excerpt}}</p>
+          <div class="mt-auto flex items-center justify-between pt-2">
+            <span class="text-xs text-on-surface-variant"><time datetime="{{.PublishedAt.Format "2006-01-02"}}">{{.PublishedAt.Format "Jan 2, 2006"}}</time></span>
+            <span class="text-primary text-xs font-semibold">Read More →</span>
+          </div>
+        </div>
+      </a>
+    </li>
+    {{end}}
+  </ul>
+  {{else}}
+  <div class="text-center py-24">
+    <span class="material-symbols-outlined text-6xl text-outline-variant mb-4">article</span>
+    <p class="text-xl text-on-surface-variant">No posts yet — check back soon.</p>
+  </div>
+  {{end}}
+</section>
+
+{{template "base_footer" .}}{{end}}

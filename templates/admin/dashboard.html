@@ -1,0 +1,79 @@
+{{define "admin_dashboard.html"}}{{template "admin_head" .}}
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+  <div class="bg-white rounded-xl p-6 border border-outline-variant/20">
+    <div class="text-3xl font-bold font-serif text-primary">{{.ProjectCount}}</div>
+    <div class="text-sm text-on-surface-variant uppercase tracking-wide mt-1">Projects</div>
+    <div class="flex gap-4 mt-4">
+      <a href="/admin/projects/new" class="text-sm font-semibold text-primary hover:underline">+ New</a>
+      <a href="/admin/projects" class="text-sm text-on-surface-variant hover:text-primary">Manage →</a>
+    </div>
+  </div>
+  
+  <div class="bg-white rounded-xl p-6 border border-outline-variant/20">
+    <div class="text-3xl font-bold font-serif text-primary">{{.PostCount}}</div>
+    <div class="text-sm text-on-surface-variant uppercase tracking-wide mt-1">Blog posts</div>
+    <div class="flex gap-4 mt-4">
+      <a href="/admin/posts/new" class="text-sm font-semibold text-primary hover:underline">+ New</a>
+      <a href="/admin/posts" class="text-sm text-on-surface-variant hover:text-primary">Manage →</a>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl p-6 border border-outline-variant/20">
+    <div class="text-3xl font-bold font-serif text-primary">{{.TestimonialCount}}</div>
+    <div class="text-sm text-on-surface-variant uppercase tracking-wide mt-1">Testimonials</div>
+    <div class="flex gap-4 mt-4">
+      <a href="/admin/testimonials/new" class="text-sm font-semibold text-primary hover:underline">+ New</a>
+      <a href="/admin/testimonials" class="text-sm text-on-surface-variant hover:text-primary">Manage →</a>
+    </div>
+  </div>
+
+  <div class="bg-primary text-on-primary rounded-xl p-6">
+    <div class="text-sm font-semibold uppercase tracking-wide mb-3">Tip</div>
+    <p class="text-sm leading-relaxed opacity-90">Use the <strong>Kind</strong> field to mark a project as a case study. Both appear in <code class="bg-white/20 px-1 rounded">/projects</code> by default.</p>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="bg-white rounded-xl border border-outline-variant/20">
+    <div class="px-6 py-4 border-b border-outline-variant/20 flex justify-between items-center">
+      <h2 class="font-serif font-bold">Recent projects</h2>
+      <a href="/admin/projects" class="text-sm text-primary hover:underline">All →</a>
+    </div>
+    {{if .RecentProjects}}
+    <ul class="divide-y divide-outline-variant/10">
+      {{range .RecentProjects}}
+      <li class="px-6 py-3 flex justify-between items-center">
+        <div>
+          <div class="font-medium">{{.Title}}</div>
+          <div class="text-xs text-on-surface-variant">{{.Kind}} · {{.CreatedAt.Format "Jan 2, 2006"}}</div>
+        </div>
+        <a href="/admin/projects/{{.ID}}/edit" class="text-sm text-primary hover:underline">Edit</a>
+      </li>
+      {{end}}
+    </ul>
+    {{else}}<p class="px-6 py-8 text-center text-on-surface-variant">No projects yet.</p>{{end}}
+  </div>
+  
+  <div class="bg-white rounded-xl border border-outline-variant/20">
+    <div class="px-6 py-4 border-b border-outline-variant/20 flex justify-between items-center">
+      <h2 class="font-serif font-bold">Recent posts</h2>
+      <a href="/admin/posts" class="text-sm text-primary hover:underline">All →</a>
+    </div>
+    {{if .RecentPosts}}
+    <ul class="divide-y divide-outline-variant/10">
+      {{range .RecentPosts}}
+      <li class="px-6 py-3 flex justify-between items-center">
+        <div>
+          <div class="font-medium line-clamp-1">{{.Title}}</div>
+          <div class="text-xs text-on-surface-variant">{{.PublishedAt.Format "Jan 2, 2006"}}</div>
+        </div>
+        <a href="/admin/posts/{{.ID}}/edit" class="text-sm text-primary hover:underline">Edit</a>
+      </li>
+      {{end}}
+    </ul>
+    {{else}}<p class="px-6 py-8 text-center text-on-surface-variant">No posts yet.</p>{{end}}
+  </div>
+</div>
+
+{{template "admin_footer" .}}{{end}}

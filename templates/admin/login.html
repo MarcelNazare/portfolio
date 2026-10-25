@@ -1,0 +1,39 @@
+{{define "admin_login.html"}}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Login — Marcel</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-surface-container-low min-h-screen flex items-center justify-center p-4 font-body">
+
+<div class="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-outline-variant/20 p-8">
+  <div class="text-center mb-8">
+    <a href="/" class="font-serif font-bold text-2xl text-primary">marcel<span class="text-on-surface-variant">.admin</span></a>
+    <p class="text-sm text-on-surface-variant mt-2">Enter your password to continue.</p>
+  </div>
+
+  {{if .Error}}
+  <div class="bg-red-50 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm border border-red-200 text-center">
+    {{.Error}}
+  </div>
+  {{end}}
+
+  <form action="/admin/login" method="POST" class="space-y-4">
+  <input type="hidden" name="csrf_token" value="{{.CSRF}}">
+  <label class="block">
+    <span class="text-sm font-semibold">Password</span>
+    <input type="password" name="password" required autofocus
+           class="mt-1 w-full px-4 py-3 border border-outline-variant/40 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">
+  </label>
+  <button type="submit" class="w-full bg-primary text-on-primary py-3 rounded-lg font-semibold hover:bg-primary-dim transition shadow-sm">
+    Sign In
+  </button>
+</form>
+</div>
+
+</body>
+</html>
+{{end}}

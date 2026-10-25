@@ -1,0 +1,33 @@
+{{define "about.html"}}{{template "base_head" .}}
+
+<section class="py-16 px-6 md:px-12 lg:px-24 max-w-5xl mx-auto">
+  <h1 class="text-5xl md:text-6xl font-bold font-serif mb-4">About</h1>
+  <p class="text-xl text-on-surface-variant mb-16 max-w-2xl">
+    Data analyst with a background in social work and development studies. Open to data analyst and data engineering roles in NGO / development / public-interest space — remote or hybrid (EU).
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+    <div class="space-y-6 text-lg text-on-surface-variant leading-relaxed">
+      <h2 class="text-2xl font-bold font-serif text-on-background">The short version</h2>
+      <p>I work at the intersection of Python, SQL, and social impact. I've spent years in the field — first as a social worker, then as a data analyst — and I believe the best dashboards are the ones a program manager actually opens on Monday morning.</p>
+      <p>My tooling is pragmatic: Python and SQL for the heavy lifting, Tableau or Plotly for the human-facing layer, and Go when I want a service that stays up without babysitting.</p>
+    </div>
+    <div class="space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold font-serif mb-4">Toolkit</h2>
+        <ul class="space-y-2 text-on-surface-variant">
+          <li><strong class="text-on-background">Languages:</strong> Python, SQL, Go</li>
+          <li><strong class="text-on-background">Data:</strong> Pandas, GeoPandas, dbt, PostgreSQL, Neon</li>
+          <li><strong class="text-on-background">Viz:</strong> Tableau, Matplotlib, Plotly</li>
+          <li><strong class="text-on-background">Infra:</strong> Docker, GitHub Actions, Fly.io</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold font-serif mb-4">Currently</h2>
+        <p class="text-on-surface-variant">Building lightweight data infrastructure for social-sector orgs. Writing about data ethics on <a href="https://medium.com/@realmarcelnazare" class="text-primary underline">Medium</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{template "base_footer" .}}{{end}}
