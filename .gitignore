@@ -1,6 +1,7 @@
 # ─── Environment Variables ──────────────────────────────────────────
 .env
 .env.local
+.env.example
 
 # ─── Go Binaries & Builds ───────────────────────────────────────────
 portfolio
